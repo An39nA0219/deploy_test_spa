@@ -19,5 +19,16 @@ module DeployTestSpa
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-  end
+
+    
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        # 許可するドメイン
+        origins "localhost:3000"
+        # 許可するヘッダとメソッドの種類
+        resource "*",
+                 headers: :any,
+                 methods: [:get, :post, :patch, :delete, :head, :options]
+      end
+    end  end
 end

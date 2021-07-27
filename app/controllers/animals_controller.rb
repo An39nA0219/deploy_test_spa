@@ -1,17 +1,9 @@
 class AnimalsController < ApplicationController
   def index
-    animals = Animal.all.select(:id, :name)
+    animals = Animal.all.select(:color, :name)
     render json: {
       status: "success",
       animals: animals
-    }
-  end
-
-  def show
-    animal = Animal.find(params[:id])
-    render json: {
-      status: "success",
-      animal: animal
     }
   end
 
